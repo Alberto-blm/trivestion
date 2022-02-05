@@ -15,28 +15,39 @@ function QuestionsPage(){
     const [questions, setQuestions] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
-    
-    useEffect(() => {
-        console.log("ENTRO AL USEEFFECT")
+
+    function handlerFetch(){
         fetch("https://opentdb.com/api.php?amount=10&type=multiple")
-          .then(res => res.json())
-          .then(
-            (result) => {
-                
-                setQuestions(result.results);
-                setIsLoaded(true);
-                
-                
-            },
-            // Nota: es importante manejar errores aquí y no en 
-            // un bloque catch() para que no interceptemos errores
-            // de errores reales en los componentes.
-            (error) => {
-                console.log("ENTRO EN EL ERROR")
-                setIsLoaded(true);
-                setError(error);
-            }
-          )
+        .then(res => res.json())
+        .then(
+          (result) => {
+              
+              setQuestions(result.results);
+              setIsLoaded(true);
+              
+              
+          },
+          // Nota: es importante manejar errores aquí y no en 
+          // un bloque catch() para que no interceptemos errores
+          // de errores reales en los componentes.
+          (error) => {
+              console.log("ENTRO EN EL ERROR")
+              setIsLoaded(true);
+              setError(error);
+          }
+        )
+    }
+
+    function playAgain(){
+        setIsLoaded(false);
+        setQuestions([]);
+        setCurrentQuestion(0);
+        setAnswers([]);
+        handlerFetch();
+    }
+
+    useEffect(() => {
+        handlerFetch();
     }, [])
     
     if(!isLoaded){
@@ -95,7 +106,7 @@ function QuestionsPage(){
                         </Row>
                     ))}
 
-                    <Row><Link to='/quiz'><ButtonPlay>PLAY AGAIN</ButtonPlay></Link></Row>
+                    <Row><Col><ButtonPlay onClick={() => playAgain()}>PLAY AGAIN</ButtonPlay></Col></Row>
                     
                 </div>
             </Container>
