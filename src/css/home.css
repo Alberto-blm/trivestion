@@ -5,7 +5,6 @@
 
 .image{
     padding-top: 1em;
-    height: 200px;
-    width: 200px;
-
+    height: 200px !important;
+    width: 200px !important;
 }

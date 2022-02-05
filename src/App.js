@@ -3,6 +3,7 @@ import './App.css';
 import { ButtonPlay } from './styledComponents/buttonPlay';
 import { Routes, Switch, Route, Redirect } from 'react-router-dom'
 import Home from './pages/home';
+import QuestionsPage from './pages/questionsPage';
 
 
 function App() {
@@ -12,6 +13,10 @@ function App() {
           <Route
             path="/"
             element={<Home/>}
+          />
+          <Route
+            path="/quiz"
+            element={<QuestionsPage/>}
           />
       </Routes>
     </div>

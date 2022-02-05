@@ -37,11 +37,15 @@
   }
 }
 
-.container{
+.container-fluid{
   height: 100%;
     position: absolute;
     left: 0;
     width: 100%;
     overflow: hidden;
     background-color: #282c34;
+}
+
+#root {
+  width: 100%;
 }
