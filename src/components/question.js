@@ -4,6 +4,7 @@ import logo from "../assets/trivialLogo.png";
 import "../css/question.css"
 import {Button, Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Timer from "./timer";
 
 function Question ({questions, setQuestions, question, currentQuestion, setCurrentQuestion, answers, setAnswers}){
     //console.log(question.correct_answer)
@@ -12,6 +13,7 @@ function Question ({questions, setQuestions, question, currentQuestion, setCurre
     var wrong = question.incorrect_answers;
     const [isLoaded, setIsLoaded] = useState(0);
     const [posibilities, setPosibilities] = useState([]);
+    const [skipTimer, setSkipTimer] = useState(0)
     
 
     function mixAnswers (wrong) {
@@ -26,6 +28,9 @@ function Question ({questions, setQuestions, question, currentQuestion, setCurre
     if(!isLoaded){
         mixAnswers (wrong);
     }
+    if(skipTimer == 1){
+        saveAnswer(1)
+    }
 
 
     function handlerProgress(){
@@ -33,6 +38,7 @@ function Question ({questions, setQuestions, question, currentQuestion, setCurre
 	    setCurrentQuestion(nextQuestion);
         setIsLoaded(0);
         setSelectedOption(null);
+        setSkipTimer(0);
     }
 
     function saveAnswer (type) {
@@ -79,6 +85,9 @@ function Question ({questions, setQuestions, question, currentQuestion, setCurre
                 <Col>
                     <h3>Progress {currentQuestion+1} of 10</h3>
                 </Col>
+            </Row>
+            <Row>
+                <Timer setSkipTimer={setSkipTimer}></Timer>
             </Row>
             <Row>
                 <h3>{question.question}</h3>
