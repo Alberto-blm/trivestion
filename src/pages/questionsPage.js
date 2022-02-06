@@ -33,7 +33,7 @@ function QuestionsPage(){
           // un bloque catch() para que no interceptemos errores
           // de errores reales en los componentes.
           (error) => {
-              console.log("ENTRO EN EL ERROR")
+              
               setIsLoaded(true);
               setError(error);
           }
@@ -52,7 +52,20 @@ function QuestionsPage(){
         handlerFetch();
     }, [])
     
-    if(!isLoaded){
+    if (error != null){
+        return (
+            <Container fluid>
+                <div className="page">
+                    <Row>
+                        <AppName>Trivestion</AppName>
+                    </Row>
+                    <Row>
+                        <h2>Ha ocurrido un error disculpe las molestias.</h2>
+                    </Row>
+                </div>
+            </Container>
+        )
+    } else if(!isLoaded){
         return(
             <Container fluid>
                 <div className="page">
