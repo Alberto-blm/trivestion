@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ButtonPlay } from "../styledComponents/buttonPlay";
+import { TimetText } from "../styledComponents/timerStyled";
 import logo from "../assets/trivialLogo.png";
 import {Button, Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,11 +30,26 @@ function Timer({setSkipTimer, resetTimer, setResetTimer}){
         setTimer(30);
     }
 
-    return(
-        <div>
-            <h4>Tiempo restante : {timer}</h4>
-        </div>
-    )
+    if(timer > 10){
+        return(
+            <div>
+                <TimetText safe>Tiempo restante : {timer}</TimetText>
+            </div>
+        )
+    } else if (timer < 6){
+        return(
+            <div>
+                <TimetText danger>Tiempo restante : {timer}</TimetText>
+            </div>
+        )
+    } else {
+        return(
+            <div>
+                <TimetText warning>Tiempo restante : {timer}</TimetText>
+            </div>
+        )
+    }
+    
 }
 
 export default Timer
