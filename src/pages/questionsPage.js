@@ -17,7 +17,9 @@ function QuestionsPage(){
     const [answers, setAnswers] = useState([]);
 
     function handlerFetch(){
-        fetch("https://opentdb.com/api.php?amount=10&type=multiple")
+        fetch("https://opentdb.com/api.php?amount=10&type=multiple", {
+            "Content-Type": "application/json",
+          })
         .then(res => res.json())
         .then(
           (result) => {

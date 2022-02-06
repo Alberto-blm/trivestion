@@ -7,14 +7,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Timer from "./timer";
 
 function Question ({questions, setQuestions, question, currentQuestion, setCurrentQuestion, answers, setAnswers}){
-    //console.log(question.correct_answer)
     const [selectedOption, setSelectedOption] = useState(null)
     var mixed = [question.correct_answer];
     var wrong = question.incorrect_answers;
     const [isLoaded, setIsLoaded] = useState(0);
     const [posibilities, setPosibilities] = useState([]);
-    const [skipTimer, setSkipTimer] = useState(0)
+    const [skipTimer, setSkipTimer] = useState(0);
+    const [resetTimer, setResetTimer] = useState(0);
     
+
 
     function mixAnswers (wrong) {
         mixed = mixed.concat(wrong);
@@ -39,6 +40,7 @@ function Question ({questions, setQuestions, question, currentQuestion, setCurre
         setIsLoaded(0);
         setSelectedOption(null);
         setSkipTimer(0);
+        setResetTimer(0);
     }
 
     function saveAnswer (type) {
@@ -87,7 +89,7 @@ function Question ({questions, setQuestions, question, currentQuestion, setCurre
                 </Col>
             </Row>
             <Row>
-                <Timer setSkipTimer={setSkipTimer}></Timer>
+                <Timer setSkipTimer={setSkipTimer} resetTimer={resetTimer} setResetTimer={setResetTimer}></Timer>
             </Row>
             <Row>
                 <h3>{question.question}</h3>
@@ -95,7 +97,7 @@ function Question ({questions, setQuestions, question, currentQuestion, setCurre
             <Row>
                 {posibilities.map( answer => (
                     <Col sm={6}>
-                        <input className="radioBtn" type="radio" value={answer} name="anwersBtn" onClick={() => setSelectedOption(answer)}></input><label>{answer}</label>
+                        <input className="radioBtn" checked={selectedOption == answer} type="radio" value={answer} name="anwersBtn" onChange={() => setSelectedOption(answer)}></input><label>{answer}</label>
                     </Col>
                 ))}
             </Row>

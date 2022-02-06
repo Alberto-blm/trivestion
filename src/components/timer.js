@@ -4,18 +4,31 @@ import logo from "../assets/trivialLogo.png";
 import {Button, Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Timer({setSkipTimer}){
+function Timer({setSkipTimer, resetTimer, setResetTimer}){
 
     const [timer, setTimer] = useState(30);
+    
 
     useEffect(() => {
-        timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
-      }, [timer]);
+        if(resetTimer == 0){
+            setResetTimer(1)
+            setTimer(30)
+        }
+        let timeOut = setTimeout(() => {
+                if(timer > 0)
+                setTimer(timer - 1)
+            }, 1000);
+        
+        return ()=> {
+            clearTimeout(timeOut);
+          };
+
+      }, [timer, resetTimer]);
     
-      if(timer == 0){
-          setSkipTimer(1);
-          setTimer(30);
-      }
+    if(timer == 0){
+        setSkipTimer(1);
+        setTimer(30);
+    }
 
     return(
         <div>
