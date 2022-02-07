@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { TimetText } from "../styledComponents/timerStyled";
-import logo from "../assets/trivialLogo.png";
-import {Button, Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Timer({setSkipTimer, resetTimer, setResetTimer}){

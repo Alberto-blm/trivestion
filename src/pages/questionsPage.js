@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ButtonPlay } from "../styledComponents/buttonPlay";
-import logo from "../assets/trivialLogo.png";
 import { AppName } from "../styledComponents/appName";
 import "../css/questionsPage.css"
 import {Col, Container, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Question from "../components/question";
 import Answered from "../components/answer";
-import {Link} from 'react-router-dom'
 
 function QuestionsPage(){
     const [error, setError] = useState(null);

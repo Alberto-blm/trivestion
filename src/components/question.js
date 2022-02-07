@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { ButtonPlay } from "../styledComponents/buttonPlay";
-import logo from "../assets/trivialLogo.png";
+import React, { useState } from "react";
 import "../css/question.css"
-import {Button, Col, Container, Row} from 'react-bootstrap'
+import {Button, Col, Row} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Timer from "./timer";
 
-function Question ({questions, setQuestions, question, currentQuestion, setCurrentQuestion, answers, setAnswers}){
+function Question ({ question, currentQuestion, setCurrentQuestion, answers, setAnswers}){
     const [selectedOption, setSelectedOption] = useState(null)
     var mixed = [question.correct_answer];
     var wrong = question.incorrect_answers;

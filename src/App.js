@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { ButtonPlay } from './styledComponents/buttonPlay';
-import { Routes, Switch, Route, Redirect } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Home from './pages/home';
 import QuestionsPage from './pages/questionsPage';
 

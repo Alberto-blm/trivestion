@@ -3,7 +3,7 @@ import { ButtonPlay } from "../styledComponents/buttonPlay";
 import { AppName } from "../styledComponents/appName";
 import logo from "../assets/trivialLogo.png";
 import "../css/home.css"
-import {Col, Container, Row} from 'react-bootstrap'
+import { Container, Row} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
